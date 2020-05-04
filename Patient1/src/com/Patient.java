@@ -42,7 +42,7 @@ public class Patient {
 				String nic = rs.getString("nic");
 				String phoneNo = Integer.toString(rs.getInt("PhoneNo"));
 				// Add into the html table
-				output += "<tr><td>" + patientName + "</td>";
+				output += "<tr><td><input id='hiduserIDUpdate'name='hiduserIDUpdate' type='hidden'value='" + UserID + "'>" + patientName  + "</td>";
 				output += "<td>" + age + "</td>";
 				output += "<td>" + nic + "</td>";
 				output += "<td>" + phoneNo + "</td>";
@@ -112,8 +112,8 @@ public class Patient {
 			preparedStmt.execute();
 			con.close();
 			// output = "Updated successfully";
-			String newPatient = readPatient();
-			output = "{\"status\":\"success\", \"data\": \"" + newPatient + "\"}";
+			//String newPatient = readPatient();
+			//output = "{\"status\":\"success\", \"data\": \"" + newPatient + "\"}";
 		} catch (Exception e) {
 			output = "{\"status\":\"error\", \"data\": \"Error while updating the Patient details.\"}";
 			System.err.println(e.getMessage());

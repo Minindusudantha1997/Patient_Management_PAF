@@ -13,7 +13,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-6">
+			<div class="col-6" id ="colPatient">
 				<h1>Patient Details</h1>
 				<form id="formPatient" name="formPatient">
 					Patient Name:<input id="Name" name="Name" type="text"
@@ -23,17 +23,25 @@
 					of patient: <input id="nic" name="nic" type="text"
 						class="form-control form-control-sm"> <br> Phone
 					number of guardian: <input id="phoneNo" name="phoneNo" type="text"
-						class="form-control form-control-sm"> <br>
-					<input id="btnSave" name="btnSave" type="button" value="Save"
+						class="form-control form-control-sm"> <br> <input
+						id="btnSave" name="btnSave" type="button" value="Save"
 						class="btn btn-primary"> <input type="hidden"
 						id="hiduserIDSave" name="hiduserIDSave" value="">&nbsp;&nbsp;<input
-						id="btnReset" name="btnReset" type="reset" value="Reset" class="btn btn-primary">
-					
+						id="btnReset" name="btnReset" type="reset" value="Reset"
+						class="btn btn-primary">
+
 				</form>
 				<div id="alertSuccess" class="alert alert-success"></div>
 				<div id="alertError" class="alert alert-danger"></div>
 				<br>
-				<div id="divPatientGrid">
+				
+				<div class="row">
+<div class="col-7" id="colStudents">
+
+</div>
+</div><br>
+<div id="divPatientGrid">
+				
 					<%
 						Patient p1 = new Patient();
 						out.print(p1.readPatient());
