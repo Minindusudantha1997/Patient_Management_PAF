@@ -16,7 +16,6 @@ $(document).on("click", "#btnSave", function(event)
 	
 	//Form validation-------------------
 	var status = validatePatientForm();
-	//not valid
 	if (status != true)
 	{
 		$("#alertError").text(status);
@@ -27,21 +26,8 @@ $(document).on("click", "#btnSave", function(event)
 
 	// If valid-------------------------
 	
-	/*$("#formPatient").submit();
+	//$("#formPatient").submit();
 	
-	var Patient = insertPatient(
-		$("#Name").val(),
-		$("#age").val(),
-		$("#nic").val(),
-		$("#phoneNo").val());
-			 $("#colPatient").append(Patient);
-
-			 $("#alertSuccess").text("Saved successfully.");
-			 $("#alertSuccess").show();
-
-			 $("#formPatient")[0].reset();
-	*/
-
 	var type = ($("#hiduserIDSave").val() == "") ? "POST" : "PUT";
 	
 	$.ajax(
@@ -54,12 +40,12 @@ $(document).on("click", "#btnSave", function(event)
 					onPatientSaveComplete(response.responseText, status);
 				}
 			});
-});
+ });
 
-function onPatientSaveComplete(responseText, status) {
+function onPatientSaveComplete(response, status) {
 	if (status == "success")
 		{
-			var resultSet = JSON.parse(responseText);
+			var resultSet = JSON.parse(response);
 			
 			if (resultSet.status.trim() == "success")
 				{
@@ -87,7 +73,6 @@ function onPatientSaveComplete(responseText, status) {
 		$("#formPatient")[0].reset();
 	
 }
-
 
 //UPDATE==========================================
 $(document).on("click", ".btnUpdate", function(event)
@@ -145,8 +130,8 @@ function onPatientDeleteComplete(response, status) {
 		$("#hiduserIDSave").val("");
 		$("#formPatient")[0].reset();
 	
-
 }
+
 //CLIENT-MODEL================================================================
 function validatePatientForm()
 {

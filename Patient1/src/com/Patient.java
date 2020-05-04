@@ -47,7 +47,7 @@ public class Patient {
 				output += "<td>" + nic + "</td>";
 				output += "<td>" + phoneNo + "</td>";
 				// buttons
-				output += "<td><input name='btnUpdate' type='button'value='Update' class='btnUpdate btn btn-secondary'></td><td><input name='btnRemove' type='button'value='Remove'class='btnRemove btn btn-danger' data-userID='"
+				output += "<td><input name='btnUpdate' type='button'value='Update' class='btnUpdate btn btn-secondary'></td><td><input name='btnRemove'id ='btnRemove' type='button'value='Remove'class='btnRemove btn btn-danger' data-userID='"
 						+ UserID + "'>" + "</td></tr>";
 			}
 			con.close();
