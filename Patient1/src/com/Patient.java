@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-
 public class Patient {
 	// A common method to connect to the DB
 	private Connection connect() {
@@ -21,16 +20,16 @@ public class Patient {
 		}
 		return con;
 	}
-	
+
 	public String readPatient() {
 		String output = "";
 		try {
-			//DBConnection dbconnection = new DBConnection();
-			Connection con =  connect();
+
+			Connection con = connect();
 			if (con == null) {
 				return "Error while connecting to the database for reading.";
 			}
-			// Prepare the html table to be displayed
+
 			output = "<table border=\"1\"><th>Patient Name</th><th>Age</th><th>NIC</th><th>Contact No</th><th>Update</th><th>Remove</th></tr>";
 			String query = "select * from patient";
 			Statement stmt = con.createStatement();
@@ -48,7 +47,7 @@ public class Patient {
 				output += "<td>" + nic + "</td>";
 				output += "<td>" + phoneNo + "</td>";
 				// buttons
-				output +=  "<td><input name='btnUpdate' type='button'value='Update' class='btnUpdate btn btn-secondary'></td><td><input name='btnRemove' type='button'value='Remove'class='btnRemove btn btn-danger' data-userID='"
+				output += "<td><input name='btnUpdate' type='button'value='Update' class='btnUpdate btn btn-secondary'></td><td><input name='btnRemove' type='button'value='Remove'class='btnRemove btn btn-danger' data-userID='"
 						+ UserID + "'>" + "</td></tr>";
 			}
 			con.close();
@@ -64,14 +63,13 @@ public class Patient {
 	public String insertPatient(String Name, String age, String nic, String phoneNo) {
 		String output = "";
 		try {
-			//DBConnection dbconnection = new DBConnection();
+
 			Connection con = connect();
 			if (con == null) {
 				return "Error while connecting to the database for inserting.";
 			}
 			// create a prepared statement
-			String query = " insert into patient(`userID`,`Name`,`age`,`nic`,`phoneNo`)"
-					+ " values (?, ?, ?, ?, ?)";
+			String query = " insert into patient(`userID`,`Name`,`age`,`nic`,`phoneNo`)" + " values (?, ?, ?, ?, ?)";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
 			preparedStmt.setInt(1, 0);
@@ -82,10 +80,9 @@ public class Patient {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-			//output = "Inserted successfully";
+			// output = "Inserted successfully";
 			String newPatient = readPatient();
-			 output = "{\"status\":\"success\", \"data\": \"" +
-			 newPatient + "\"}";
+			output = "{\"status\":\"success\", \"data\": \"" + newPatient + "\"}";
 		} catch (Exception e) {
 			output = "{\"status\":\"error\", \"data\": \"Error while inserting the Patient details.\"}";
 			System.err.println(e.getMessage());
@@ -93,12 +90,10 @@ public class Patient {
 		return output;
 	}
 
-
-
 	public String updatePatient(String ID, String name, String age, String nic, String pNo) {
 		String output = "";
 		try {
-			//DBConnection dbconnection = new DBConnection();
+
 			Connection con = connect();
 			if (con == null) {
 				return "Error while connecting to the database for updating.";
@@ -116,10 +111,9 @@ public class Patient {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-			//output = "Updated successfully";
+			// output = "Updated successfully";
 			String newPatient = readPatient();
-			 output = "{\"status\":\"success\", \"data\": \"" +
-			 newPatient + "\"}";
+			output = "{\"status\":\"success\", \"data\": \"" + newPatient + "\"}";
 		} catch (Exception e) {
 			output = "{\"status\":\"error\", \"data\": \"Error while updating the Patient details.\"}";
 			System.err.println(e.getMessage());
@@ -130,7 +124,7 @@ public class Patient {
 	public String deletePatient(String userID) {
 		String output = "";
 		try {
-			//DBConnection dbconnection = new DBConnection();
+
 			Connection con = connect();
 			if (con == null) {
 				return "Error while connecting to the database for deleting.";
@@ -143,11 +137,10 @@ public class Patient {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-			//output = "Deleted successfully";
+			// output = "Deleted successfully";
 			String newPatient = readPatient();
-			 output = "{\"status\":\"success\", \"data\": \"" +
-			 newPatient + "\"}"; 
-			
+			output = "{\"status\":\"success\", \"data\": \"" + newPatient + "\"}";
+
 		} catch (Exception e) {
 			output = "{\"status\":\"error\", \"data\": \"Error while deleting the Patient details.\"}";
 			System.err.println(e.getMessage());
