@@ -160,7 +160,7 @@ function validatePatientForm()
 	}
 	//nic length
 	var tmpnic = $("#nic").val().trim();
-	 if(tmpnic<=9 ||tmpnic>=11) {
+	 if(tmpnic<10 ||tmpnic>=11) {
 		    return("invalid nic (Ex: 123456789v)");
 		  }
 	 
