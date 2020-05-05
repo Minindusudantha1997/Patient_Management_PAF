@@ -3,6 +3,9 @@ $(document).ready(function()
 	$("#alertSuccess").hide();
 	
 	$("#alertError").hide();
+	  $("#btnSave").click(function(){
+		    alert("Submitted");
+		  });
 });
 
 //SAVE ============================================
@@ -148,28 +151,31 @@ function validatePatientForm()
 		return "Insert Patients' age.";
 	}
 
-	/* is numerical value
-	var tmpPrice = $("#nic").val().trim();
-	if (!$.isNumeric(tmpPrice))
-	{
-		return "Insert a numerical value for Item Price.";
-	}	
 
-	// convert to decimal price
-	$("#itemPrice").val(parseFloat(tmpPrice).toFixed(2));
 
-*/
 	// nic------------------------
 	if ($("#nic").val().trim() == "")
 	{
 		return "Insert NIC number.";
 	}
-	
-
-	//Phone no------------------------
-	if ($("#phoneNo").val().trim() == "")
+	//nic length
+	var tmpnic = $("#nic").val().trim();
+	 if(tmpnic<=9 ||tmpnic>=11) {
+		    return("invalid nic (Ex: 123456789v)");
+		  }
+	 
+		//Phone no------------------------
+		if ($("#phoneNo").val().trim() == "")
+		{
+			return "Insert Phone number.";
+		}
+		
+	 //is pNO numerical value
+	var tmpphoneNo = $("#phoneNo").val().trim();
+	if (!$.isNumeric(tmpphoneNo))
 	{
-		return "Insert Phone number.";
+		return "Insert only numbers for Phone Number.";
 	}
+
 	return true;
 	}

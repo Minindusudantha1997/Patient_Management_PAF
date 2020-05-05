@@ -9,13 +9,7 @@
 <link rel="stylesheet" href="Views/bootstrap.min.css">
 <script src="Components/jquery-3.2.1.min.js"></script>
 <script src="Components/Patient.js"></script>
-<script>
-$(document).ready(function(){
-  $("#btnSave").click(function(){
-    alert("Submitted");
-  });
-});
-</script>
+
 </head>
 <body>
 	<div class="container">
